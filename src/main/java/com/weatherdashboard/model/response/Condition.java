@@ -1,5 +1,9 @@
 package com.weatherdashboard.model.response;
 
-class Condition {
-    String text;
+public class Condition {
+    private String text;
+
+    public String getText() {
+        return text;
+    }
 }

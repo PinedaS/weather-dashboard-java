@@ -1,8 +1,24 @@
 package com.weatherdashboard.model.response;
 
 public class Location {
-    String name;
-    String region;
-    String country;
-    String localtime;
+    private String name;
+    private String region;
+    private String country;
+    private String localtime;
+
+    public String getName() {
+        return name;
+    }
+
+    public String getRegion() {
+        return region;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public String getLocaltime() {
+        return localtime;
+    }
 }
