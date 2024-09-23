@@ -7,7 +7,7 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
 public class HttpUtils {
-    public void getCurrentWeather(String endpoint) {
+    public static String getCurrentWeather(String endpoint) {
         HttpClient httpClient = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(endpoint))
@@ -16,6 +16,7 @@ public class HttpUtils {
 
         try {
             HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+            return response.body();
         } catch (IOException e) {
             throw new RuntimeException(e);
         } catch (InterruptedException e) {
