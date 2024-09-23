@@ -1,7 +1,5 @@
 package com.weatherdashboard.util;
 
-import com.weatherdashboard.config.AppConfig;
-
 import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -9,12 +7,10 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
 public class HttpUtils {
-    public void getCurrentWeather(String city) {
-        final String URI_STRING = AppConfig.getBaseUrl() + "?key=" + AppConfig.getApiKey() + "&q=" + city;
-
+    public void getCurrentWeather(String endpoint) {
         HttpClient httpClient = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create(URI_STRING))
+                .uri(URI.create(endpoint))
                 .GET()
                 .build();
 
