@@ -6,25 +6,18 @@ public class Current {
     @SerializedName("temp_c")
     private double tempC;
 
-    @SerializedName("temp_f")
-    private double tempF;
-
     private Condition condition;
 
     @SerializedName("wind_kph")
     private double windKph;
 
-    private int humidity;
+    private Integer humidity;
 
     @SerializedName("feelslike_c")
     private double feelslikeC;
 
     public double getTempC() {
         return tempC;
-    }
-
-    public double getTempF() {
-        return tempF;
     }
 
     public Condition getCondition() {
@@ -35,7 +28,7 @@ public class Current {
         return windKph;
     }
 
-    public int getHumidity() {
+    public Integer getHumidity() {
         return humidity;
     }
 
