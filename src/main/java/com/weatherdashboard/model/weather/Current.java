@@ -1,4 +1,4 @@
-package com.weatherdashboard.model.response;
+package com.weatherdashboard.model.weather;
 
 import com.google.gson.annotations.SerializedName;
 

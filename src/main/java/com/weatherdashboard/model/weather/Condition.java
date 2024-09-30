@@ -1,4 +1,4 @@
-package com.weatherdashboard.model.response;
+package com.weatherdashboard.model.weather;
 
 public class Condition {
     private String text;

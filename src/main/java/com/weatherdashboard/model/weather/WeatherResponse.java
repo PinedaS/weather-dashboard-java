@@ -1,4 +1,4 @@
-package com.weatherdashboard.model.response;
+package com.weatherdashboard.model.weather;
 
 public class WeatherResponse {
     private Location location;
