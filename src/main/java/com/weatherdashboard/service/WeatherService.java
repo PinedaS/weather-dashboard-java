@@ -4,6 +4,7 @@ import com.weatherdashboard.api.WeatherApiClient;
 import com.weatherdashboard.model.forecast.ForecastResponse;
 import com.weatherdashboard.model.weather.WeatherResponse;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -39,5 +40,39 @@ public class WeatherService {
                 .collect(Collectors.toList());
 
         return forecastList;
+    }
+
+    public static List<String> getWeatherDataToBeCompared(List<String> citiesList) {
+        List<WeatherResponse> weatherResponseList = new ArrayList<>();
+        List<String> weatherDataToBeComparedList;
+
+        citiesList.forEach(city -> {
+            weatherResponseList.add(WeatherApiClient.getCurrentWeather(city));
+        });
+
+        weatherDataToBeComparedList = weatherResponseList.stream()
+                .map(weatherResponse ->
+                        weatherResponse.getLocation().getName() + ": "
+                                + weatherResponse.getCurrent().getTempC() + "°C. "
+                                + weatherResponse.getCurrent().getCondition().getText())
+                .collect(Collectors.toList());
+
+        return weatherDataToBeComparedList;
+    }
+
+    public static void getCityWithHighestTemperature(List<String> citiesList) {
+        List<WeatherResponse> weatherResponseList = new ArrayList<>();
+        Optional<WeatherResponse> hottestCity = Optional.of(new WeatherResponse());
+
+        citiesList.forEach(city -> {
+            weatherResponseList.add(WeatherApiClient.getCurrentWeather(city));
+        });
+
+       hottestCity = weatherResponseList.stream()
+               .reduce((c1, c2) -> c1.getCurrent().getTempC() > c2.getCurrent().getTempC() ? c1 : c2);
+
+       hottestCity.ifPresent(
+               city -> System.out.println("La ciudad más cálida es: " + city.getLocation().getName() + " con " + city.getCurrent().getTempC() + " °C")
+       );
     }
 }

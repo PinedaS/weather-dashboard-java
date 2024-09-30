@@ -3,6 +3,7 @@ package com.weatherdashboard.ui;
 import com.weatherdashboard.model.weather.WeatherResponse;
 import com.weatherdashboard.service.WeatherService;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
@@ -11,6 +12,9 @@ public class ConsoleUI {
     static int option;
     static String cityName;
     static String isWarm;
+    static List<String> citiesList = new ArrayList<>();
+    static String isCompare;
+    static List<String> weatherDataToBeComparedList = new ArrayList<>();
 
     public static void run() {
         Scanner scanner = new Scanner (System.in);
@@ -74,6 +78,31 @@ public class ConsoleUI {
                     forecastList.forEach(f -> System.out.println(f  + "\n"));
                 }
                 break;
+
+            case 3:
+                System.out.println("Ciudad: ");
+                cityName = scanner.nextLine();
+                citiesList.add(cityName);
+                System.out.println("Ciudad: ");
+                cityName = scanner.nextLine();
+                citiesList.add(cityName);
+                System.out.println("¿Deseas comparar con otra ciudad? (S/N)");
+                isCompare = scanner.nextLine();
+
+                while (isCompare.equals("S")) {
+                    System.out.println("Ciudad: ");
+                    cityName = scanner.nextLine();
+                    citiesList.add(cityName);
+
+                    System.out.println("¿Deseas comparar con otra ciudad? (S/N)");
+                    isCompare = scanner.nextLine();
+                }
+
+                weatherDataToBeComparedList = WeatherService.getWeatherDataToBeCompared(citiesList);
+                weatherDataToBeComparedList.forEach(wdcl -> System.out.println(wdcl + "\n"));
+                WeatherService.getCityWithHighestTemperature(citiesList);
+
+                break;
         }
     }
 
@@ -84,7 +113,6 @@ public class ConsoleUI {
         System.out.println("1. Consultar el clima actual de una ciudad");
         System.out.println("2. Consultar el pronóstico del clima a 2 días");
         System.out.println("3. Comparar el clima de varias ciudades");
-        System.out.println("4. Almacenar y gestionar ciudades favoritas");
         option = scanner.nextInt();
         System.out.println("----------------------------");
     }
