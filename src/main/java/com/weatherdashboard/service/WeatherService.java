@@ -10,8 +10,10 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class WeatherService {
-    public static Optional<WeatherResponse> getCurrentWeather(String city) {
-        return Optional.ofNullable(WeatherApiClient.getCurrentWeather(city));
+    WeatherApiClient weatherApiClient = new WeatherApiClient();
+
+    public Optional<WeatherResponse> getCurrentWeather(String city) {
+        return Optional.ofNullable(weatherApiClient.getCurrentWeather(city));
     }
 
     public static List<String> getWarmDays(String city) {
@@ -42,12 +44,12 @@ public class WeatherService {
         return forecastList;
     }
 
-    public static List<String> getWeatherDataToBeCompared(List<String> citiesList) {
+    public List<String> getWeatherDataToBeCompared(List<String> citiesList) {
         List<WeatherResponse> weatherResponseList = new ArrayList<>();
         List<String> weatherDataToBeComparedList;
 
         citiesList.forEach(city -> {
-            weatherResponseList.add(WeatherApiClient.getCurrentWeather(city));
+            weatherResponseList.add(weatherApiClient.getCurrentWeather(city));
         });
 
         weatherDataToBeComparedList = weatherResponseList.stream()
@@ -60,12 +62,12 @@ public class WeatherService {
         return weatherDataToBeComparedList;
     }
 
-    public static void getCityWithHighestTemperature(List<String> citiesList) {
+    public void getCityWithHighestTemperature(List<String> citiesList) {
         List<WeatherResponse> weatherResponseList = new ArrayList<>();
         Optional<WeatherResponse> hottestCity = Optional.of(new WeatherResponse());
 
         citiesList.forEach(city -> {
-            weatherResponseList.add(WeatherApiClient.getCurrentWeather(city));
+            weatherResponseList.add(weatherApiClient.getCurrentWeather(city));
         });
 
        hottestCity = weatherResponseList.stream()

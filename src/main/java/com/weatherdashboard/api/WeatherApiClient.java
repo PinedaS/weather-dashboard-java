@@ -7,7 +7,7 @@ import com.weatherdashboard.util.ApiEndpoints;
 import com.weatherdashboard.util.HttpUtils;
 
 public class WeatherApiClient {
-    public static WeatherResponse getCurrentWeather(String city) {
+    public WeatherResponse getCurrentWeather(String city) {
         final String URI_STRING = ApiEndpoints.getCurrentWeatherUrl(city);
         String apiResponse = HttpUtils.requestToWeatherApi(URI_STRING);
         Gson gson = new Gson();

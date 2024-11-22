@@ -15,8 +15,9 @@ public class ConsoleUI {
     static List<String> citiesList = new ArrayList<>();
     static String isCompare;
     static List<String> weatherDataToBeComparedList = new ArrayList<>();
+    WeatherService weatherService = new WeatherService();
 
-    public static void run() {
+    public void run() {
         Scanner scanner = new Scanner (System.in);
 
         printMenu();
@@ -26,7 +27,7 @@ public class ConsoleUI {
                 System.out.println("Ciudad: ");
                 cityName = scanner.nextLine();
                 System.out.println("----------------------------");
-                Optional<WeatherResponse> weatherResponse = WeatherService.getCurrentWeather(cityName);
+                Optional<WeatherResponse> weatherResponse = weatherService.getCurrentWeather(cityName);
 
                 weatherResponse.ifPresentOrElse(
                         wr -> {
@@ -74,7 +75,7 @@ public class ConsoleUI {
                 }
 
                 if (isWarm.equals("N")) {
-                    List<String> forecastList = WeatherService.get3daysForecast(cityName);
+                    List<String> forecastList = weatherService.get3daysForecast(cityName);
                     forecastList.forEach(f -> System.out.println(f  + "\n"));
                 }
                 break;
@@ -98,9 +99,9 @@ public class ConsoleUI {
                     isCompare = scanner.nextLine();
                 }
 
-                weatherDataToBeComparedList = WeatherService.getWeatherDataToBeCompared(citiesList);
+                weatherDataToBeComparedList = weatherService.getWeatherDataToBeCompared(citiesList);
                 weatherDataToBeComparedList.forEach(wdcl -> System.out.println(wdcl + "\n"));
-                WeatherService.getCityWithHighestTemperature(citiesList);
+                weatherService.getCityWithHighestTemperature(citiesList);
 
                 break;
         }
