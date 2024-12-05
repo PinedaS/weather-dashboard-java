@@ -12,6 +12,15 @@ public class Day {
 
     private Condition condition;
 
+    public Day() {
+    }
+
+    public Day(double minTempC, double maxTempC, Condition condition) {
+        this.minTempC = minTempC;
+        this.maxTempC = maxTempC;
+        this.condition = condition;
+    }
+
     public double getMinTempC() {
         return minTempC;
     }

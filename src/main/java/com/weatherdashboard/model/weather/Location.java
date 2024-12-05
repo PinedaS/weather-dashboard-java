@@ -8,6 +8,16 @@ public class Location {
     private String country;
     private String localtime;
 
+    public Location() {
+    }
+
+    public Location(String name, String region, String country, String localtime) {
+        this.name = name;
+        this.region = region;
+        this.country = country;
+        this.localtime = localtime;
+    }
+
     public String getName() {
         return name;
     }
@@ -23,8 +33,6 @@ public class Location {
     public String getLocaltime() {
         return localtime;
     }
-
-
 
     @Override
     public String toString() {

@@ -8,6 +8,13 @@ public class Forecast {
     @SerializedName("forecastday")
     List<ForecastDay> forecastDay;
 
+    public Forecast() {
+    }
+
+    public Forecast(List<ForecastDay> forecastDay) {
+        this.forecastDay = forecastDay;
+    }
+
     public List<ForecastDay> getForecastDay() {
         return forecastDay;
     }

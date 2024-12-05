@@ -16,7 +16,7 @@ public class WeatherApiClient {
         return weatherResponse;
     }
 
-    public static ForecastResponse get3daysForecast(String city) {
+    public ForecastResponse get3daysForecast(String city) {
         final String URI_STRING = ApiEndpoints.get3daysForecastUrl(city);
         String apiResponse = HttpUtils.requestToWeatherApi(URI_STRING);
         Gson gson = new Gson();

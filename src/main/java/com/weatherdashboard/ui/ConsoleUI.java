@@ -1,6 +1,8 @@
 package com.weatherdashboard.ui;
 
+import com.weatherdashboard.api.WeatherApiClient;
 import com.weatherdashboard.model.weather.WeatherResponse;
+import com.weatherdashboard.service.ForecastService;
 import com.weatherdashboard.service.WeatherService;
 
 import java.util.ArrayList;
@@ -15,7 +17,9 @@ public class ConsoleUI {
     static List<String> citiesList = new ArrayList<>();
     static String isCompare;
     static List<String> weatherDataToBeComparedList = new ArrayList<>();
-    WeatherService weatherService = new WeatherService();
+    WeatherApiClient weatherApiClient = new WeatherApiClient();
+    WeatherService weatherService = new WeatherService(weatherApiClient);
+    ForecastService forecastService = new ForecastService();
 
     public void run() {
         Scanner scanner = new Scanner (System.in);
@@ -70,12 +74,12 @@ public class ConsoleUI {
                 System.out.println("----------------------------");
 
                 if (isWarm.equals("S")) {
-                    List<String> warmDays = WeatherService.getWarmDays(cityName);
+                    List<String> warmDays = forecastService.getWarmDays(cityName);
                     warmDays.forEach(System.out::println);
                 }
 
                 if (isWarm.equals("N")) {
-                    List<String> forecastList = weatherService.get3daysForecast(cityName);
+                    List<String> forecastList = forecastService.get2daysForecast(cityName);
                     forecastList.forEach(f -> System.out.println(f  + "\n"));
                 }
                 break;

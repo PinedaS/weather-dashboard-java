@@ -18,6 +18,17 @@ public class Current {
     @SerializedName("feelslike_c")
     private double feelslikeC;
 
+    public Current() {
+    }
+
+    public Current(double tempC, Condition condition, double windKph, Integer humidity, double feelslikeC) {
+        this.tempC = tempC;
+        this.condition = condition;
+        this.windKph = windKph;
+        this.humidity = humidity;
+        this.feelslikeC = feelslikeC;
+    }
+
     public double getTempC() {
         return tempC;
     }
@@ -36,13 +47,6 @@ public class Current {
 
     public double getFeelslikeC() {
         return feelslikeC;
-    }
-
-    public Current() {
-    }
-
-    public Current(Condition condition) {
-        this.condition = condition;
     }
 
     @Override
