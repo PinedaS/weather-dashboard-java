@@ -7,7 +7,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class ForecastService {
-    WeatherApiClient weatherApiClient = new WeatherApiClient();
+    WeatherApiClient weatherApiClient;
+
+    public ForecastService(WeatherApiClient weatherApiClient) {
+        this.weatherApiClient = weatherApiClient;
+    }
 
     public List<String> getWarmDays(String city) {
         ForecastResponse forecastResponse = weatherApiClient.get3daysForecast(city);

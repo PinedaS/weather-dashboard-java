@@ -19,7 +19,7 @@ public class ConsoleUI {
     static List<String> weatherDataToBeComparedList = new ArrayList<>();
     WeatherApiClient weatherApiClient = new WeatherApiClient();
     WeatherService weatherService = new WeatherService(weatherApiClient);
-    ForecastService forecastService = new ForecastService();
+    ForecastService forecastService = new ForecastService(weatherApiClient);
 
     public void run() {
         Scanner scanner = new Scanner (System.in);
