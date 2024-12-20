@@ -13,6 +13,7 @@ Este proyecto es una aplicación que consume la API de **WeatherAPI** para consu
 - **WeatherAPI**: API de datos meteorológicos.
 - **Gson**: Para deserializar las respuestas JSON de la API.
 - **Maven**: Para la gestión de dependencias.
+- **JUnit 5**: Para pruebas unitarias.
 
 ## Historias de Usuario
 
@@ -56,6 +57,20 @@ Este proyecto es una aplicación que consume la API de **WeatherAPI** para consu
 
 ---
 
+## Pruebas unitarias
+Se implementaron pruebas unitarias para garantizar el correcto funcionamiento de los servicios principales:
+- **`WeatherService`**: Pruebas para validar la consulta del clima actual y el pronóstico.
+- **`ForecastService`**: Pruebas para validar la comparación de climas entre ciudades.
+
+Las pruebas fueron implementadas utilizando **JUnit 5**.
+
+### Ejecución de pruebas
+Para ejecutar las pruebas unitarias, utiliza el siguiente comando:
+
+```bash
+mvn test
+```
+
 ## Instalación y ejecución
 
 ### 1. Clonar el repositorio
@@ -73,16 +88,18 @@ git clone git@github.com:PinedaS/weather-dashboard-java.git
 ### 3. Construir el proyecto
 Este proyecto utiliza **Maven** para gestionar dependencias. Para construir el proyecto, asegúrate de tener Maven instalado y luego ejecuta:
 
+```bash
 mvn clean install
-
+```
 
 ### 4. Ejecutar el proyecto
 Para ejecutar la aplicación, utiliza el método main() en la clase principal WeatherDashboardApplication. Si usas un IDE como IntelliJ o Eclipse, puedes ejecutarlo directamente desde allí.
 
 Para ejecutarlo desde la línea de comandos:
 
+```bash
 mvn exec:java -Dexec.mainClass="com.weatherdashboard.WeatherDashboardApplication"
-
+```
 
 ## Uso de Programación Funcional
 Este proyecto pone a prueba conceptos clave de **programación funcional** en Java, usando la API de Streams:
