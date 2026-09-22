@@ -9,7 +9,7 @@ Este proyecto es una aplicación que consume la API de **WeatherAPI** para consu
 - Comparar el clima entre varias ciudades para encontrar la ciudad más cálida.
 
 ## Tecnologías utilizadas
-- **Java 11+**
+- **Java 22**
 - **WeatherAPI**: API de datos meteorológicos.
 - **Gson**: Para deserializar las respuestas JSON de la API.
 - **Maven**: Para la gestión de dependencias.
